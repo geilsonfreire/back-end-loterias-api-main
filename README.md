@@ -11,26 +11,31 @@
 ## Doação (*Importante!*)
 
 Esta API e um fork do excelente trabalho do Gusta-Alves desde ja grato
-'''
+
+````
+
   A API é 100% gratuita. Porém ela está hospedada no [Heroku](https://www.heroku.com/) que recentemente [parou de oferecer planos de produtos gratuitos](https://blog.heroku.com/next-chapter), portanto agora há custos para mantê-la.
 
   Então se você achou este projeto interessante ou é útil para você de alguma forma, por favor considere fazer uma doação para ajudar com os custos da hospedagem, qualquer valor ajudará.
   
-'''
-### 1. Doar pelo QR CODE PIX
-
-**Escaneie** nosso QR CODE e doe qualquer valor!
-
-<img src="https://github.com/user-attachments/assets/2b857f15-eb0f-4db0-a1dc-4f97b085c429" width="150" height="150">
 
 
-### 2. Doar com PagBank
+  ### 1. Doar pelo QR CODE PIX
 
-Utilize o link do PagBank para doar utilizando outras formas como: Cartão de Crédito, Débito e Boleto.
+  **Escaneie** nosso QR CODE e doe qualquer valor!
 
-**Para doar copie e cole no seu navegador o seguinte link**: https://pag.ae/7_9FuVnxG
+  <img src="https://github.com/user-attachments/assets/2b857f15-eb0f-4db0-a1dc-4f97b085c429" width="150" height="150">
 
-![Donate](https://stc.pagseguro.uol.com.br/public/img/botoes/doacoes/205x30-doar.gif) 
+
+  ### 2. Doar com PagBank
+
+  Utilize o link do PagBank para doar utilizando outras formas como: Cartão de Crédito, Débito e Boleto.
+
+  **Para doar copie e cole no seu navegador o seguinte link**: https://pag.ae/7_9FuVnxG
+
+  ![Donate](https://stc.pagseguro.uol.com.br/public/img/botoes/doacoes/205x30-doar.gif) 
+
+````
 
 ## Exemplos de Retorno
 Atualmente o banco de dados contém os jogos das loterias ...
