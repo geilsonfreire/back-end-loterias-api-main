@@ -1,8 +1,6 @@
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
-![GitHub stars](https://img.shields.io/github/stars/guto-alves/loterias-api)
-<a href="https://t.me/+VNG9nOMxG1NkMTEx">
-<img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" height="20" />
-</a>
+![GitHub stars](https://github.com/geilsonfreire/back-end-loterias-api-main)
+
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/48946749/147809259-e7b15a3b-2e90-42c2-abaf-a6cacdc77e03.png">
@@ -15,10 +13,13 @@
 
 ## Doação (*Importante!*)
 
-A API é 100% gratuita. Porém ela está hospedada no [Heroku](https://www.heroku.com/) que recentemente [parou de oferecer planos de produtos gratuitos](https://blog.heroku.com/next-chapter), portanto agora há custos para mantê-la.
+Esta API e um fork do excelente trabalho do Gusta-Alves desde ja grato
+'''
+  A API é 100% gratuita. Porém ela está hospedada no [Heroku](https://www.heroku.com/) que recentemente [parou de oferecer planos de produtos gratuitos](https://blog.heroku.com/next-chapter), portanto agora há custos para mantê-la.
 
-Então se você achou este projeto interessante ou é útil para você de alguma forma, por favor considere fazer uma doação para ajudar com os custos da hospedagem, qualquer valor ajudará.
-
+  Então se você achou este projeto interessante ou é útil para você de alguma forma, por favor considere fazer uma doação para ajudar com os custos da hospedagem, qualquer valor ajudará.
+  
+'''
 ### 1. Doar pelo QR CODE PIX
 
 **Escaneie** nosso QR CODE e doe qualquer valor!
@@ -37,7 +38,7 @@ Utilize o link do PagBank para doar utilizando outras formas como: Cartão de Cr
 ## Exemplos de Retorno
 Atualmente o banco de dados contém os jogos das loterias ...
 
-https://loteriascaixa-api.herokuapp.com/api
+https://localhost/api
 
 ```
 [
@@ -56,11 +57,11 @@ https://loteriascaixa-api.herokuapp.com/api
 
 ### **Obtendo o Resultado Mais Recente**
 
-URL BASE: ```https://loteriascaixa-api.herokuapp.com/api/<loteria>/latest```
+URL BASE: ```https://localhost/api/<loteria>/latest```
 
 Apenas substitua ```<loteria>``` pelo nome da loteria desejada. Por exemplo, consultando pelo resultado da Mega-Sena (```megasena```) mais recente: 
 
-https://loteriascaixa-api.herokuapp.com/api/megasena/latest
+https://localhost/api/megasena/latest
 
 ```
 {
@@ -156,10 +157,7 @@ https://loteriascaixa-api.herokuapp.com/api/megasena/latest
  
 Para mais informações sobre todas as operações da API acesse: 
 
-https://loteriascaixa-api.herokuapp.com/swagger-ui/#/Loterias
+https://localhost/swagger-ui/#/Loterias
 
 ![image](https://user-images.githubusercontent.com/48946749/144352143-7140d64d-43a9-465c-b12c-7d5d3514ccd5.png)
 
-## Contribuição
-
-Quaisquer contribuições para este repositório são bem-vindas! Em caso de problema, dúvida ou dificuldade não hesite em criar uma [Issue](https://github.com/guto-alves/loterias-api/issues).
