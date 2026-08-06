@@ -35,6 +35,7 @@ public class Consumer {
         return servicebus2(loteria, concurso);
     }
 
+    @SuppressWarnings("null")
     private Resultado servicebus2(String loteria, String concurso) throws Exception {
         String baseUrl = "https://servicebus2.caixa.gov.br/portaldeloterias/api/";
 
@@ -125,6 +126,7 @@ public class Consumer {
         // PREMIACOES
         List<Premiacao> premiacoes = jsonObject.getJSONArray("listaRateioPremio").toList().stream()
                 .map(obj -> {
+                    @SuppressWarnings("rawtypes")
                     JSONObject jsonObject2 = new JSONObject((Map) obj);
 
                     Premiacao premiacao = new Premiacao();
@@ -141,6 +143,7 @@ public class Consumer {
         // ESTADOS PREMIADOS
         List<MunicipioUFGanhadores> municipiosGanhadores = jsonObject
                 .getJSONArray("listaMunicipioUFGanhadores").toList().stream().map(obj -> {
+                    @SuppressWarnings("rawtypes")
                     JSONObject jsonObject2 = new JSONObject((Map) obj);
 
                     MunicipioUFGanhadores mg = new MunicipioUFGanhadores();
@@ -181,6 +184,7 @@ public class Consumer {
         return resultado;
     }
 
+    @SuppressWarnings("unused")
     @Deprecated
     private Resultado sorteOnline(String loteria, String concurso) throws Exception {
         String baseUrl = "https://www.sorteonline.com.br/";

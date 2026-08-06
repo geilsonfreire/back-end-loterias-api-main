@@ -14,6 +14,7 @@ import org.jsoup.Jsoup;
 
 public class SSLHelper {
 
+    @SuppressWarnings("deprecation")
     static public Connection getConnection(String url) {
         return Jsoup.connect(url)
                 .ignoreContentType(true)

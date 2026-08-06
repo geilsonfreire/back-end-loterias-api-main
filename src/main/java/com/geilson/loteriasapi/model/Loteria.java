@@ -31,6 +31,7 @@ public enum Loteria {
         return nome;
     }
 
+    @SuppressWarnings("null")
     public static List<String> asList() {
         return Stream.of(Loteria.values()).map(Loteria::toString)
                 .collect(Collectors.toList());

@@ -35,7 +35,10 @@ public class LoteriasUpdate {
             }
         }
 
-        cacheManager.getCache("resultados").clear();
+        var cache = cacheManager.getCache("resultados");
+        if (cache != null) {
+            cache.clear();
+        }
     }
 
     @Component
@@ -47,6 +50,7 @@ public class LoteriasUpdate {
         @Autowired
         private ResultadoService resultadoService;
 
+        @SuppressWarnings("null")
         @Async
         public void checkForUpdates(String loteria) throws Exception {
             Resultado latestResultado = consumer.getResultado(loteria, null);

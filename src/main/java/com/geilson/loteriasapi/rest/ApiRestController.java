@@ -23,113 +23,77 @@ import java.util.List;
 @Tag(name = "Loterias")
 public class ApiRestController {
 
-    private static final String INVALID_LOTTERY_MESSAGE =
-            "'%s' não é o id de nenhuma das loterias suportadas. Loterias suportadas: %s";
+        private static final String INVALID_LOTTERY_MESSAGE = "'%s' não é o id de nenhuma das loterias suportadas. Loterias suportadas: %s";
 
-    private static final String RESULT_NOT_FOUND_MESSAGE =
-            "Resultado não encontrado para \"%s\", concurso \"%d\"";
+        private static final String RESULT_NOT_FOUND_MESSAGE = "Resultado não encontrado para \"%s\", concurso \"%d\"";
 
-    private static final String NO_RESULTS_FOUND_MESSAGE =
-            "Nenhum resultado encontrado para a loteria %s";
+        private static final String NO_RESULTS_FOUND_MESSAGE = "Nenhum resultado encontrado para a loteria %s";
 
-    private final List<String> lotteries = Loteria.asList();
+        private final List<String> lotteries = Loteria.asList();
 
-    private final String ALLOWABLE_VALUES =
-            "maismilionaria, megasena, lotofacil, quina,"
-            + " lotomania, timemania, duplasena, federal, diadesorte, supersete";
+        @SuppressWarnings("unused")
+        private final String ALLOWABLE_VALUES = "maismilionaria, megasena, lotofacil, quina,"
+                        + " lotomania, timemania, duplasena, federal, diadesorte, supersete";
 
-    @Autowired
-    private ResultadoService resultadoService;
+        @Autowired
+        private ResultadoService resultadoService;
 
-    @GetMapping
-    @Operation(
-            summary = "Retorna todas as loterias disponíveis para pesquisa."
-    )
-    public ResponseEntity<List<String>> getLotteries() {
-        return ResponseEntity.ok(Loteria.asList());
-    }
-
-    @GetMapping("{loteria}")
-    @Operation(
-            summary = "Retorna todos os resultados já realizados da loteria especificada."
-    )
-    public ResponseEntity<List<Resultado>> getResultsByLottery(
-            @PathVariable
-            @Parameter(
-                    description = "Identificador da loteria",
-                    required = true,
-                    example = "lotofacil"
-            )
-            String loteria) {
-
-        validateLottery(loteria);
-
-        return ResponseEntity.ok(resultadoService.findByLoteria(loteria));
-    }
-
-    @GetMapping("{loteria}/{concurso}")
-    @Operation(
-            summary = "Retorna o resultado da loteria e concurso especificado."
-    )
-    public ResponseEntity<Resultado> getResultById(
-            @PathVariable
-            @Parameter(
-                    description = "Identificador da loteria",
-                    required = true,
-                    example = "lotofacil"
-            )
-            String loteria,
-
-            @PathVariable
-            @Parameter(
-                    description = "Número do concurso",
-                    required = true,
-                    example = "3500"
-            )
-            Integer concurso) {
-
-        validateLottery(loteria);
-
-        Resultado resultado =
-                resultadoService.findByLoteriaAndConcurso(loteria, concurso);
-
-        if (resultado == null) {
-            throw new ResourceNotFoundException(
-                    RESULT_NOT_FOUND_MESSAGE.formatted(loteria, concurso));
+        @GetMapping
+        @Operation(summary = "Retorna todas as loterias disponíveis para pesquisa.")
+        public ResponseEntity<List<String>> getLotteries() {
+                return ResponseEntity.ok(Loteria.asList());
         }
 
-        return ResponseEntity.ok(resultado);
-    }
+        @GetMapping("{loteria}")
+        @Operation(summary = "Retorna todos os resultados já realizados da loteria especificada.")
+        public ResponseEntity<List<Resultado>> getResultsByLottery(
+                        @PathVariable @Parameter(description = "Identificador da loteria", required = true, example = "lotofacil") String loteria) {
 
-    @GetMapping("{loteria}/latest")
-    @Operation(
-            summary = "Retorna o resultado mais recente da loteria especificada."
-    )
-    public ResponseEntity<Resultado> getLatestResult(
-            @PathVariable
-            @Parameter(
-                    description = "Identificador da loteria",
-                    required = true,
-                    example = "lotofacil"
-            )
-            String loteria) {
+                validateLottery(loteria);
 
-        validateLottery(loteria);
-
-        Resultado resultado = resultadoService.findLatest(loteria);
-
-        if (resultado == null) {
-            throw new ResourceNotFoundException(
-                    NO_RESULTS_FOUND_MESSAGE.formatted(loteria));
+                return ResponseEntity.ok(resultadoService.findByLoteria(loteria));
         }
 
-        return ResponseEntity.ok(resultado);
-    }
+        @GetMapping("{loteria}/{concurso}")
+        @Operation(summary = "Retorna o resultado da loteria e concurso especificado.")
+        public ResponseEntity<Resultado> getResultById(
+                        @PathVariable @Parameter(description = "Identificador da loteria", required = true, example = "lotofacil") String loteria,
 
-    private void validateLottery(String loteria) {
-        if (!lotteries.contains(loteria)) {
-            throw new ResourceNotFoundException(
-                    INVALID_LOTTERY_MESSAGE.formatted(loteria, lotteries));
+                        @PathVariable @Parameter(description = "Número do concurso", required = true, example = "3500") Integer concurso) {
+
+                validateLottery(loteria);
+
+                Resultado resultado = resultadoService.findByLoteriaAndConcurso(loteria, concurso);
+
+                if (resultado == null) {
+                        throw new ResourceNotFoundException(
+                                        RESULT_NOT_FOUND_MESSAGE.formatted(loteria, concurso));
+                }
+
+                return ResponseEntity.ok(resultado);
         }
-    }
+
+        @GetMapping("{loteria}/latest")
+        @Operation(summary = "Retorna o resultado mais recente da loteria especificada.")
+        public ResponseEntity<Resultado> getLatestResult(
+                        @PathVariable @Parameter(description = "Identificador da loteria", required = true, example = "lotofacil") String loteria) {
+
+                validateLottery(loteria);
+
+                Resultado resultado = resultadoService.findLatest(loteria);
+
+                if (resultado == null) {
+                        throw new ResourceNotFoundException(
+                                        NO_RESULTS_FOUND_MESSAGE.formatted(loteria));
+                }
+
+                return ResponseEntity.ok(resultado);
+        }
+
+        private void validateLottery(String loteria) {
+                if (!lotteries.contains(loteria)) {
+                        throw new ResourceNotFoundException(
+                                        INVALID_LOTTERY_MESSAGE.formatted(loteria, lotteries));
+                }
+        }
 }

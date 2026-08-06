@@ -18,6 +18,7 @@ public class ResultadoService {
         this.repository = repository;
     }
 
+    @SuppressWarnings("null")
     @Cacheable("resultados")
     public List<Resultado> findByLoteria(String loteria) {
         return repository.findById_Loteria(loteria)
